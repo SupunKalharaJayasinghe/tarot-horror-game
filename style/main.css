@@ -1,0 +1,1767 @@
+:root{
+    --void-black: #000000;
+    --shadow-black: #0a0a0a;
+    --deep-black: #050505;
+    --blood-red: #660000;
+    --dark-blood: #330000;
+    --crimson: #990000;
+    --bone-white: #f5f5dc;
+    --decay-green: #2d4a2b;
+    --rust-orange: #cc4400;
+    --corpse-gray: #1a1a1a;
+    --nightmare-purple: #2d1b3d;
+    --death-blue: #0f1419;
+  }
+  * { box-sizing: border-box; }
+  
+  body { 
+    font-family: 'Creepster', 'Chiller', 'Nosifer', cursive, system-ui;
+    background: 
+      radial-gradient(ellipse at 20% 80%, var(--nightmare-purple) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, var(--death-blue) 0%, transparent 50%),
+      radial-gradient(ellipse at 40% 40%, var(--dark-blood) 0%, transparent 70%),
+      linear-gradient(180deg, var(--void-black) 0%, var(--deep-black) 50%, var(--shadow-black) 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Horror Atmospheric Effects */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(102,0,0,0.03) 1deg, transparent 2deg),
+      radial-gradient(circle at 30% 70%, rgba(45,27,61,0.4) 0%, transparent 50%),
+      radial-gradient(circle at 70% 30%, rgba(15,20,25,0.4) 0%, transparent 50%);
+    pointer-events: none;
+    animation: atmosphericShift 20s ease-in-out infinite alternate;
+  }
+
+  /* Creeping Shadows */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 200% 100% at 50% 100%, rgba(0,0,0,0.8) 0%, transparent 50%),
+      radial-gradient(ellipse 100% 200% at 0% 50%, rgba(51,0,0,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse 100% 200% at 100% 50%, rgba(15,20,25,0.3) 0%, transparent 50%);
+    pointer-events: none;
+    animation: shadowCreep 30s ease-in-out infinite;
+  }
+
+  @keyframes atmosphericShift {
+    0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.9; transform: scale(1.05) rotate(0.5deg); }
+  }
+
+  @keyframes shadowCreep {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+  
+  /* 3D Ritual Table */
+  .table-wood{
+    background:
+      /* Central void */
+      radial-gradient(circle at center, var(--void-black) 0%, var(--shadow-black) 30%, var(--void-black) 100%),
+      /* Blood red energy rings */
+      radial-gradient(circle at center, transparent 20%, var(--blood-red) 21%, transparent 22%),
+      radial-gradient(circle at center, transparent 40%, var(--crimson) 41%, transparent 42%),
+      radial-gradient(circle at center, transparent 60%, var(--blood-red) 61%, transparent 62%),
+      /* Gold ritual circle */
+      radial-gradient(circle at center, transparent 78%, var(--gold) 79%, var(--dark-gold) 80%, transparent 81%);
+    border: 6px solid var(--gold);
+    border-radius: 50%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(15deg);
+    box-shadow: 
+      /* 3D depth shadows */
+      0 20px 60px rgba(139,0,0,0.6),
+      0 40px 100px rgba(0,0,0,0.8),
+      inset 0 0 100px rgba(139,0,0,0.3),
+      inset 0 0 200px rgba(0,0,0,0.7),
+      /* Mystical glow */
+      0 0 50px var(--blood-red),
+      0 0 100px rgba(139,0,0,0.4);
+  }
+  
+  /* 3D Ritual Symbols */
+  .table-wood::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      /* Pulsing energy center */
+      radial-gradient(circle at center, var(--ember) 0%, transparent 10%),
+      /* Rotating ritual symbols */
+      conic-gradient(from 0deg at center, transparent 0deg, var(--gold) 10deg, transparent 20deg, var(--gold) 30deg, transparent 40deg, var(--gold) 50deg, transparent 60deg, var(--gold) 70deg, transparent 80deg, var(--gold) 90deg, transparent 100deg, var(--gold) 110deg, transparent 120deg);
+    pointer-events: none;
+    animation: ritualRotate 20s linear infinite;
+    opacity: 0.3;
+  }
+  
+  /* Floating runes */
+  .table-wood::after{
+    content: '';
+    position: absolute;
+    inset: 15%;
+    border-radius: inherit;
+    background:
+      /* Inner mystical circle */
+      radial-gradient(circle at center, transparent 85%, var(--gold) 88%, transparent 92%);
+    pointer-events: none;
+    animation: ritualPulse 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes ritualRotate{
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes ritualPulse{
+    0% { opacity: 0.2; transform: scale(1); }
+    100% { opacity: 0.6; transform: scale(1.05); }
+  }
+  
+  /* Candle glow */
+  .candle{
+    position:absolute;
+    width:18px; height:18px; border-radius:50%;
+    background: radial-gradient(circle, #ffd27d, #d98d00 60%, transparent 70%);
+    filter: blur(1px) drop-shadow(0 0 30px #ffce6a);
+    animation: flicker 2s infinite ease-in-out;
+  }
+  @keyframes flicker{
+    0%,100%{ transform:translateX(-50%) scale(1); opacity:.9 }
+    40%{ transform:translateX(-50%) scale(1.05); opacity:1 }
+    70%{ transform:translateX(-50%) scale(0.98); opacity:.8 }
+  }
+  
+  /* Horror 3D Panels */
+  .horror-panel-left, .horror-panel-right {
+    background: 
+      linear-gradient(145deg, var(--corpse-gray) 0%, var(--shadow-black) 50%, var(--deep-black) 100%),
+      radial-gradient(circle at 30% 30%, var(--dark-blood) 0%, transparent 70%);
+    border: 2px solid var(--blood-red);
+    border-radius: 20px;
+    padding: 2rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(-2deg) rotateX(1deg);
+    box-shadow: 
+      /* Deep 3D shadows */
+      -10px 10px 30px rgba(0,0,0,0.8),
+      -20px 20px 60px rgba(102,0,0,0.4),
+      /* Inner glow */
+      inset 0 0 20px rgba(102,0,0,0.2),
+      inset -2px -2px 10px rgba(0,0,0,0.5),
+      inset 2px 2px 10px rgba(102,0,0,0.1);
+    position: relative;
+    animation: panelFloat 8s ease-in-out infinite;
+  }
+
+  .horror-panel-right {
+    transform: perspective(1000px) rotateY(2deg) rotateX(1deg);
+  }
+
+  /* Panel atmospheric effects */
+  .horror-panel-left::before, .horror-panel-right::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: 
+      conic-gradient(from 0deg, var(--blood-red) 0deg, transparent 90deg, var(--blood-red) 180deg, transparent 270deg),
+      linear-gradient(45deg, transparent 30%, rgba(102,0,0,0.1) 50%, transparent 70%);
+    border-radius: 22px;
+    z-index: -1;
+    animation: panelGlow 6s ease-in-out infinite alternate;
+  }
+
+  /* Panel content styling */
+  .horror-panel-left > *, .horror-panel-right > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes panelFloat {
+    0%, 100% { 
+      transform: perspective(1000px) rotateY(-2deg) rotateX(1deg) translateY(0px);
+      box-shadow: 
+        -10px 10px 30px rgba(0,0,0,0.8),
+        -20px 20px 60px rgba(102,0,0,0.4),
+        inset 0 0 20px rgba(102,0,0,0.2);
+    }
+    50% { 
+      transform: perspective(1000px) rotateY(-1deg) rotateX(0.5deg) translateY(-5px);
+      box-shadow: 
+        -15px 15px 40px rgba(0,0,0,0.9),
+        -25px 25px 80px rgba(102,0,0,0.6),
+        inset 0 0 30px rgba(102,0,0,0.3);
+    }
+  }
+
+  @keyframes panelGlow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Horror Inputs / Buttons */
+  .input-dark{
+    background: 
+      linear-gradient(145deg, var(--shadow-black) 0%, var(--void-black) 100%),
+      radial-gradient(circle at 20% 20%, var(--dark-blood) 0%, transparent 60%);
+    border: 2px solid var(--blood-red);
+    border-radius: 12px;
+    padding: .8rem 1rem;
+    outline: none;
+    width: 100%;
+    color: var(--bone-white);
+    font-size: 0.875rem;
+    font-family: 'Courier New', monospace;
+    transform-style: preserve-3d;
+    transform: translateZ(2px);
+    box-shadow: 
+      inset 0 0 10px rgba(102,0,0,0.3),
+      0 4px 15px rgba(0,0,0,0.6);
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  /* Custom dropdown arrow for select elements */
+  select.input-dark {
+    background-image: 
+      linear-gradient(145deg, var(--shadow-black) 0%, var(--void-black) 100%),
+      radial-gradient(circle at 20% 20%, var(--dark-blood) 0%, transparent 60%),
+      url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5f5dc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: left, left, right 12px center;
+    background-size: 100%, 100%, 16px;
+    padding-right: 3rem;
+    cursor: pointer;
+  }
+
+  /* Complete Horror Dropdown Override */
+  select.input-dark {
+    /* Force dark styling on all browsers */
+    color-scheme: dark;
+  }
+
+  /* Horror Dropdown Options - Complete Override */
+  select.input-dark option {
+    background: var(--shadow-black) !important;
+    background-color: var(--shadow-black) !important;
+    color: var(--bone-white) !important;
+    font-family: 'Courier New', monospace !important;
+    padding: 0.8rem !important;
+    border: none !important;
+    text-shadow: 0 0 5px var(--blood-red) !important;
+  }
+
+  select.input-dark option:hover,
+  select.input-dark option:focus,
+  select.input-dark option:active,
+  select.input-dark option:checked,
+  select.input-dark option[selected] {
+    background: var(--dark-blood) !important;
+    background-color: var(--dark-blood) !important;
+    color: var(--bone-white) !important;
+    text-shadow: 0 0 10px var(--crimson) !important;
+    box-shadow: inset 0 0 10px rgba(153,0,0,0.5) !important;
+  }
+
+  /* Webkit specific dropdown styling */
+  select.input-dark::-webkit-scrollbar {
+    width: 12px;
+    background: var(--void-black);
+  }
+
+  select.input-dark::-webkit-scrollbar-track {
+    background: var(--void-black);
+    border-radius: 6px;
+    border: 1px solid var(--blood-red);
+  }
+
+  select.input-dark::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--blood-red) 0%, var(--dark-blood) 100%);
+    border-radius: 6px;
+    border: 1px solid var(--crimson);
+    box-shadow: inset 0 0 5px rgba(153,0,0,0.5);
+  }
+
+  select.input-dark::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--crimson) 0%, var(--blood-red) 100%);
+    box-shadow: inset 0 0 10px rgba(153,0,0,0.8);
+  }
+
+  /* Force dark theme on dropdown popup */
+  select.input-dark:focus option,
+  select.input-dark:active option {
+    background: var(--shadow-black) !important;
+    color: var(--bone-white) !important;
+  }
+
+  /* Firefox specific overrides */
+  @-moz-document url-prefix() {
+    select.input-dark {
+      background-image: 
+        linear-gradient(145deg, var(--shadow-black) 0%, var(--void-black) 100%),
+        radial-gradient(circle at 20% 20%, var(--dark-blood) 0%, transparent 60%) !important;
+      color-scheme: dark;
+    }
+    
+    select.input-dark option {
+      background: var(--shadow-black) !important;
+      color: var(--bone-white) !important;
+    }
+    
+    select.input-dark option:checked {
+      background: var(--dark-blood) !important;
+      color: var(--bone-white) !important;
+    }
+  }
+
+  /* Additional browser-specific overrides */
+  select.input-dark optgroup {
+    background: var(--void-black) !important;
+    color: var(--bone-white) !important;
+    font-family: 'Courier New', monospace !important;
+  }
+
+  /* Force horror theme on focus */
+  select.input-dark:focus {
+    color-scheme: dark;
+  }
+
+  select.input-dark:focus option:checked {
+    background: var(--dark-blood) !important;
+    color: var(--bone-white) !important;
+  }
+
+  /* Complete dropdown list styling */
+  select.input-dark[size],
+  select.input-dark[multiple] {
+    background: var(--shadow-black) !important;
+    border: 2px solid var(--blood-red) !important;
+    border-radius: 12px !important;
+  }
+
+  /* System dropdown popup override attempts */
+  select.input-dark::-ms-expand {
+    display: none;
+  }
+
+  /* Additional system overrides */
+  @media (prefers-color-scheme: dark) {
+    select.input-dark option {
+      background: var(--shadow-black) !important;
+      color: var(--bone-white) !important;
+    }
+  }
+
+  /* Force override system selection colors */
+  select.input-dark option::selection {
+    background: var(--dark-blood) !important;
+    color: var(--bone-white) !important;
+  }
+
+  select.input-dark option::-moz-selection {
+    background: var(--dark-blood) !important;
+    color: var(--bone-white) !important;
+  }
+
+  /* Horror glow effect for selected option */
+  select.input-dark option:focus,
+  select.input-dark option:hover {
+    outline: 2px solid var(--crimson) !important;
+    outline-offset: -2px !important;
+  }
+  .input-dark:focus{ 
+    border-color: var(--crimson); 
+    box-shadow: 
+      0 0 0 3px rgba(153,0,0,0.3),
+      inset 0 0 15px rgba(102,0,0,0.5),
+      0 0 20px rgba(153,0,0,0.4);
+    transform: translateZ(4px);
+  }
+  
+  /* Horror Ritual Button */
+  .btn-ritual{
+    background: 
+      linear-gradient(145deg, var(--dark-blood) 0%, var(--void-black) 50%, var(--shadow-black) 100%),
+      radial-gradient(circle at center, var(--blood-red) 0%, transparent 70%);
+    border: 3px solid var(--crimson);
+    color: var(--bone-white);
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    width: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    transform: translateZ(5px);
+    box-shadow: 
+      0 8px 25px rgba(0,0,0,0.8),
+      0 4px 15px rgba(153,0,0,0.6),
+      inset 0 0 20px rgba(102,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-ritual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(153,0,0,0.3) 50%, transparent 70%);
+    animation: buttonShimmer 3s ease-in-out infinite;
+  }
+
+  .btn-ritual:hover{ 
+    transform: translateZ(8px) scale(1.02);
+    box-shadow: 
+      0 15px 40px rgba(0,0,0,0.9),
+      0 8px 25px rgba(153,0,0,0.8),
+      inset 0 0 30px rgba(102,0,0,0.4);
+    border-color: var(--rust-orange);
+  }
+  
+  /* Horror Ghost Buttons */
+  .btn-ghost{
+    background: 
+      linear-gradient(145deg, var(--corpse-gray) 0%, var(--shadow-black) 100%),
+      radial-gradient(circle at 30% 30%, var(--nightmare-purple) 0%, transparent 70%);
+    border: 2px solid var(--death-blue);
+    color: var(--bone-white);
+    border-radius: 12px;
+    padding: .8rem 1.2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(3px);
+    box-shadow: 
+      0 6px 20px rgba(0,0,0,0.7),
+      inset 0 0 15px rgba(45,27,61,0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-ghost:hover{ 
+    background: 
+      linear-gradient(145deg, var(--nightmare-purple) 0%, var(--void-black) 100%);
+    transform: translateZ(6px);
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.8),
+      inset 0 0 20px rgba(45,27,61,0.5);
+    border-color: var(--crimson);
+  }
+
+  @keyframes buttonShimmer {
+    0%, 100% { transform: translateX(-100%) rotate(45deg); }
+    50% { transform: translateX(200%) rotate(45deg); }
+  }
+
+  /* Horror Typography */
+  .horror-title {
+    font-family: 'Creepster', 'Chiller', cursive;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--bone-white);
+    text-align: center;
+    text-shadow: 
+      0 0 10px var(--blood-red),
+      2px 2px 4px rgba(0,0,0,0.8),
+      0 0 20px rgba(153,0,0,0.6);
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+  }
+
+  .horror-label {
+    display: block;
+    margin-bottom: 1.5rem;
+    transform-style: preserve-3d;
+  }
+
+  .horror-label-text {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--bone-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-shadow: 
+      0 0 8px var(--crimson),
+      1px 1px 2px rgba(0,0,0,0.8);
+    animation: labelFlicker 4s ease-in-out infinite;
+  }
+
+  .horror-tip {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: var(--bone-white);
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--dark-blood);
+    border-radius: 8px;
+    background: rgba(51,0,0,0.2);
+    text-shadow: 0 0 6px var(--blood-red);
+    line-height: 1.4;
+    animation: tipPulse 5s ease-in-out infinite;
+  }
+
+  .horror-transcript-header {
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--blood-red);
+    background: 
+      linear-gradient(145deg, var(--dark-blood) 0%, var(--void-black) 100%);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .horror-transcript-content {
+    padding: 1.5rem;
+    height: 70vh;
+    overflow-y: auto;
+    background: 
+      linear-gradient(180deg, var(--shadow-black) 0%, var(--deep-black) 100%);
+    border-radius: 0 0 20px 20px;
+  }
+
+  .horror-waiting {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: var(--bone-white);
+    text-align: center;
+    text-shadow: 0 0 10px var(--rust-orange);
+    animation: waitingPulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes titleGlow {
+    0%, 100% { 
+      text-shadow: 
+        0 0 10px var(--blood-red),
+        2px 2px 4px rgba(0,0,0,0.8),
+        0 0 20px rgba(153,0,0,0.6);
+    }
+    50% { 
+      text-shadow: 
+        0 0 20px var(--crimson),
+        2px 2px 4px rgba(0,0,0,0.8),
+        0 0 40px rgba(153,0,0,0.9);
+    }
+  }
+
+  @keyframes labelFlicker {
+    0%, 90%, 100% { opacity: 1; }
+    95% { opacity: 0.7; }
+  }
+
+  @keyframes tipPulse {
+    0%, 100% { 
+      background: rgba(51,0,0,0.2);
+      border-color: var(--dark-blood);
+    }
+    50% { 
+      background: rgba(51,0,0,0.4);
+      border-color: var(--blood-red);
+    }
+  }
+
+  @keyframes waitingPulse {
+    0%, 100% { 
+      opacity: 0.7;
+      text-shadow: 0 0 10px var(--rust-orange);
+    }
+    50% { 
+      opacity: 1;
+      text-shadow: 0 0 20px var(--rust-orange), 0 0 30px rgba(204,68,0,0.6);
+    }
+  }
+
+  /* Supernatural Background Effects */
+  .supernatural-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .floating-souls {
+    position: absolute;
+    inset: 0;
+  }
+
+  .soul {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: soulFloat 15s ease-in-out infinite;
+  }
+
+  .soul-1 { top: 10%; left: 15%; animation-delay: 0s; }
+  .soul-2 { top: 20%; right: 20%; animation-delay: 3s; }
+  .soul-3 { bottom: 30%; left: 10%; animation-delay: 6s; }
+  .soul-4 { bottom: 20%; right: 15%; animation-delay: 9s; }
+  .soul-5 { top: 60%; left: 80%; animation-delay: 12s; }
+  .soul-6 { top: 80%; right: 70%; animation-delay: 2s; }
+
+  @keyframes soulFloat {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1);
+      opacity: 0.2;
+    }
+    25% { 
+      transform: translateY(-20px) rotate(5deg) scale(1.1);
+      opacity: 0.4;
+    }
+    50% { 
+      transform: translateY(-10px) rotate(-3deg) scale(0.9);
+      opacity: 0.6;
+    }
+    75% { 
+      transform: translateY(-30px) rotate(8deg) scale(1.05);
+      opacity: 0.3;
+    }
+  }
+
+  /* Blood Rain Effect */
+  .blood-rain {
+    position: absolute;
+    inset: 0;
+  }
+
+  .blood-drop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(180deg, var(--crimson) 0%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: bloodFall 8s linear infinite;
+  }
+
+  .drop-1 { left: 20%; animation-delay: 0s; }
+  .drop-2 { left: 40%; animation-delay: 2s; }
+  .drop-3 { left: 60%; animation-delay: 4s; }
+  .drop-4 { left: 80%; animation-delay: 6s; }
+  .drop-5 { left: 10%; animation-delay: 1s; }
+
+  @keyframes bloodFall {
+    0% { 
+      top: -30px;
+      opacity: 0;
+    }
+    10% { 
+      opacity: 0.8;
+    }
+    90% { 
+      opacity: 0.8;
+    }
+    100% { 
+      top: 100vh;
+      opacity: 0;
+    }
+  }
+
+  /* Lightning Flash */
+  .lightning-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+    opacity: 0;
+    animation: lightning 20s ease-in-out infinite;
+  }
+
+  @keyframes lightning {
+    0%, 95%, 100% { opacity: 0; }
+    96%, 98% { opacity: 0.3; }
+    97% { opacity: 0; }
+  }
+
+  /* Fog Layers */
+  .fog-layer {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 200% 100% at 50% 100%, rgba(26,26,26,0.4) 0%, transparent 50%);
+    animation: fogDrift 25s ease-in-out infinite;
+  }
+
+  .fog-1 { animation-delay: 0s; }
+  .fog-2 { 
+    animation-delay: 12s;
+    animation-direction: reverse;
+  }
+
+  @keyframes fogDrift {
+    0%, 100% { 
+      transform: translateX(-20px) scale(1);
+      opacity: 0.3;
+    }
+    50% { 
+      transform: translateX(20px) scale(1.1);
+      opacity: 0.6;
+    }
+  }
+
+  /* Enhanced Horror Control Panel */
+  .horror-control-panel {
+    z-index: 1000;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .control-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: 
+      linear-gradient(145deg, var(--corpse-gray) 0%, var(--shadow-black) 50%, var(--deep-black) 100%),
+      radial-gradient(circle at center, var(--dark-blood) 0%, transparent 70%);
+    border: 3px solid var(--blood-red);
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    transform: perspective(1000px) rotateX(5deg) translateZ(10px);
+    box-shadow: 
+      0 15px 40px rgba(0,0,0,0.8),
+      0 8px 25px rgba(102,0,0,0.6),
+      inset 0 0 20px rgba(102,0,0,0.2);
+    position: relative;
+    animation: controlFloat 6s ease-in-out infinite;
+  }
+
+  .control-glow {
+    position: absolute;
+    inset: -3px;
+    background: 
+      conic-gradient(from 0deg, var(--crimson) 0deg, transparent 90deg, var(--crimson) 180deg, transparent 270deg);
+    border-radius: 28px;
+    z-index: -1;
+    animation: controlGlow 4s ease-in-out infinite alternate;
+  }
+
+  .control-divider {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(180deg, transparent 0%, var(--blood-red) 50%, transparent 100%);
+    animation: dividerPulse 3s ease-in-out infinite;
+  }
+
+  .btn-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    animation: iconSpin 8s linear infinite;
+  }
+
+  .btn-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .status-indicator {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(102,0,0,0.3);
+    border: 1px solid var(--dark-blood);
+    border-radius: 15px;
+  }
+
+  .status-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: var(--bone-white);
+    text-shadow: 0 0 8px var(--rust-orange);
+  }
+
+  @keyframes controlFloat {
+    0%, 100% { 
+      transform: perspective(1000px) rotateX(5deg) translateZ(10px) translateY(0px);
+    }
+    50% { 
+      transform: perspective(1000px) rotateX(3deg) translateZ(15px) translateY(-3px);
+    }
+  }
+
+  @keyframes controlGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes dividerPulse {
+    0%, 100% { 
+      background: linear-gradient(180deg, transparent 0%, var(--blood-red) 50%, transparent 100%);
+    }
+    50% { 
+      background: linear-gradient(180deg, transparent 0%, var(--crimson) 50%, transparent 100%);
+    }
+  }
+
+  @keyframes iconSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Corner Decorations */
+  .corner-decoration {
+    position: fixed;
+    z-index: 10;
+    font-size: 2rem;
+    opacity: 0.4;
+    animation: cornerFloat 12s ease-in-out infinite;
+  }
+
+  .corner-decoration.top-left { top: 20px; left: 20px; }
+  .corner-decoration.top-right { top: 20px; right: 20px; animation-delay: 3s; }
+  .corner-decoration.bottom-left { bottom: 20px; left: 20px; animation-delay: 6s; }
+  .corner-decoration.bottom-right { bottom: 20px; right: 20px; animation-delay: 9s; }
+
+  .decoration-rune {
+    text-shadow: 
+      0 0 15px var(--rust-orange),
+      0 0 30px rgba(204,68,0,0.6);
+    animation: runeGlow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes cornerFloat {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1);
+      opacity: 0.3;
+    }
+    50% { 
+      transform: translateY(-10px) rotate(5deg) scale(1.1);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes runeGlow {
+    0%, 100% { 
+      text-shadow: 
+        0 0 15px var(--rust-orange),
+        0 0 30px rgba(204,68,0,0.6);
+    }
+    50% { 
+      text-shadow: 
+        0 0 25px var(--rust-orange),
+        0 0 50px rgba(204,68,0,0.9);
+    }
+  }
+
+  /* Mystical Orbs */
+  .mystical-orbs {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .orb {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: 
+      radial-gradient(circle, var(--rust-orange) 0%, var(--crimson) 70%, transparent 100%);
+    box-shadow: 
+      0 0 20px var(--rust-orange),
+      0 0 40px rgba(204,68,0,0.6);
+    animation: orbFloat 20s ease-in-out infinite;
+  }
+
+  .orb-1 { 
+    top: 30%; 
+    left: 25%; 
+    animation-delay: 0s;
+  }
+  .orb-2 { 
+    top: 70%; 
+    right: 30%; 
+    animation-delay: 7s;
+  }
+  .orb-3 { 
+    bottom: 40%; 
+    left: 60%; 
+    animation-delay: 14s;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { 
+      transform: translate(0px, 0px) scale(1);
+      opacity: 0.6;
+    }
+    25% { 
+      transform: translate(30px, -20px) scale(1.2);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: translate(-20px, -40px) scale(0.8);
+      opacity: 0.4;
+    }
+    75% { 
+      transform: translate(-40px, 10px) scale(1.1);
+      opacity: 0.9;
+    }
+  }
+  
+  /* 3D Tarot Card */
+  .tarot-card{
+    transform-style: preserve-3d;
+    perspective: 1200px;
+    border-radius: 12px;
+    transition: all .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    box-shadow: 
+      0 8px 32px rgba(139,0,0,0.4),
+      0 4px 16px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,215,0,0.3);
+  }
+  .tarot-card:hover{ 
+    transform: translateZ(20px) rotateZ(var(--zrot, 0deg)) scale(1.05) rotateY(5deg); 
+    box-shadow: 
+      0 20px 60px rgba(139,0,0,0.6),
+      0 10px 30px rgba(255,215,0,0.3),
+      0 0 40px rgba(139,0,0,0.4),
+      inset 0 2px 0 rgba(255,215,0,0.5);
+  }
+  
+  .tarot-face-down{
+    background: 
+      linear-gradient(145deg, var(--void-black) 0%, var(--shadow-black) 50%, var(--void-black) 100%),
+      radial-gradient(circle at 30% 30%, var(--blood-red) 0%, transparent 70%);
+    border: 3px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 
+      inset 0 4px 8px rgba(255,215,0,0.2),
+      inset 0 -4px 8px rgba(139,0,0,0.3),
+      0 0 20px rgba(139,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .tarot-face-down::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.1) 50%, transparent 70%);
+    animation: cardShimmer 3s ease-in-out infinite;
+  }
+  
+  .tarot-face-up{
+    background: 
+      linear-gradient(145deg, var(--shadow-black) 0%, var(--void-black) 50%, var(--shadow-black) 100%),
+      radial-gradient(circle at center, var(--blood-red) 0%, transparent 60%);
+    border: 2px solid var(--dark-gold);
+    border-radius: 12px;
+    box-shadow: 
+      inset 0 2px 4px rgba(255,215,0,0.3),
+      0 0 15px rgba(139,0,0,0.5);
+  }
+
+  @keyframes cardShimmer{
+    0%, 100% { transform: translateX(-100%) rotate(45deg); }
+    50% { transform: translateX(200%) rotate(45deg); }
+  }
+  
+  /* Card inner faces */
+  .card-front, .card-back{
+    position:absolute; inset:0; border-radius:12px; backface-visibility:hidden;
+    display:flex; align-items:center; justify-content:center; padding:0.5rem; text-align:center;
+  }
+  .card-back{ transform: rotateY(0deg); }
+  .card-front{ transform: rotateY(180deg); }
+  
+  /* Visual marker for reversed cards (front face upside-down) */
+  .tarot-card.reversed .card-front{ transform: rotateY(180deg) rotate(180deg); }
+  .tarot-card.reversed .card-title::after{ content:" — reversed"; display:block; font-size:10px; color:#fca5a5; opacity:.9; margin-top:2px; }
+  .card-title{ 
+    font-family: Cinzel, serif; 
+    font-variant: small-caps; 
+    letter-spacing:.6px; 
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .card-flip{ transform: rotateY(180deg) !important; }
+  
+  /* Reading focus highlight */
+  .reading-focus{
+    box-shadow: 0 0 0 2px rgba(167,139,250,.8) inset, 0 0 24px rgba(167,139,250,.45), 0 8px 24px rgba(0,0,0,.6);
+    transition: box-shadow .2s ease;
+  }
+  
+  /* 3D Card Back Design */
+  .card-back-3d{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  /* Mystical Eye Center */
+  .mystical-eye{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+  }
+
+  .eye-outer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--blood-red) 0%, var(--void-black) 70%);
+    box-shadow: 
+      inset 0 0 10px var(--gold),
+      0 0 15px rgba(255,215,0,0.5);
+    animation: eyePulse 3s ease-in-out infinite;
+  }
+
+  .eye-inner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    background: var(--crimson);
+    box-shadow: inset 0 0 5px var(--blood-red);
+  }
+
+  .eye-pupil{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--void-black);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--gold);
+  }
+
+  /* Corner Runes */
+  .corner-rune{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 6px rgba(255,215,0,0.6);
+  }
+
+  .corner-rune.top-left{ top: 6px; left: 6px; }
+  .corner-rune.top-right{ top: 6px; right: 6px; }
+  .corner-rune.bottom-left{ bottom: 6px; left: 6px; }
+  .corner-rune.bottom-right{ bottom: 6px; right: 6px; }
+
+  /* Energy Lines */
+  .energy-lines .line{
+    position: absolute;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    box-shadow: 0 0 4px rgba(255,215,0,0.8);
+    animation: energyFlow 2s ease-in-out infinite alternate;
+  }
+
+  .energy-lines .line.horizontal{
+    top: 50%;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  .energy-lines .line.vertical{
+    left: 50%;
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(0deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  }
+
+  @keyframes eyePulse{
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+  }
+
+  @keyframes energyFlow{
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
+
+  .corner-ornament{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #d4af37;
+    background: transparent;
+  }
+
+  .corner-ornament.top-left{
+    top: -6px;
+    left: -6px;
+    border-radius: 0 0 50% 0;
+    transform: rotate(0deg);
+  }
+
+  .corner-ornament.top-right{
+    top: -6px;
+    right: -6px;
+    border-radius: 0 0 0 50%;
+    transform: rotate(90deg);
+  }
+
+  .corner-ornament.bottom-left{
+    bottom: -6px;
+    left: -6px;
+    border-radius: 0 50% 0 0;
+    transform: rotate(-90deg);
+  }
+
+  .corner-ornament.bottom-right{
+    bottom: -6px;
+    right: -6px;
+    border-radius: 50% 0 0 0;
+    transform: rotate(180deg);
+  }
+
+  .center-medallion{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .inner-circle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .center-cross{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+  }
+  
+  .center-cross::before,
+  .center-cross::after{
+    content: '';
+    position: absolute;
+    background: #d4af37;
+  }
+  
+  .center-cross::before{
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+  }
+  
+  .center-cross::after{
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+  }
+
+  .side-flourish{
+    position: absolute;
+    background: #d4af37;
+  }
+
+  .side-flourish.left{
+    left: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #d4af37;
+  }
+
+  .side-flourish.right{
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #d4af37;
+  }
+
+  .side-flourish.top{
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 1px;
+    background: #d4af37;
+  }
+
+  .side-flourish.bottom{
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 1px;
+    background: #d4af37;
+  }
+
+  /* Advanced 3D Reaper */
+  .reaper-advanced{
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    width: 120px;
+    height: 160px;
+    animation: reaperFloat 6s ease-in-out infinite;
+    filter: drop-shadow(0 20px 40px rgba(139,0,0,0.8));
+  }
+
+  /* Complex Skull Structure */
+  .skull-complex{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 70px;
+    transform-style: preserve-3d;
+  }
+
+  .skull-top{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background: 
+      radial-gradient(ellipse at 50% 30%, #2a2a2a 0%, var(--void-black) 80%),
+      linear-gradient(180deg, #1a1a1a 0%, var(--shadow-black) 100%);
+    border-radius: 50% 50% 30% 30%;
+    border: 2px solid var(--blood-red);
+    transform: translateZ(15px) rotateX(-10deg);
+    box-shadow: 
+      inset 0 0 20px rgba(139,0,0,0.4),
+      0 0 30px rgba(139,0,0,0.6);
+  }
+
+  .skull-front-upper{
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    height: 25px;
+    background: linear-gradient(180deg, #1a1a1a 0%, var(--void-black) 100%);
+    border-radius: 40% 40% 20% 20%;
+    border: 1px solid var(--blood-red);
+    transform: translateZ(12px);
+    box-shadow: inset 0 0 15px rgba(139,0,0,0.3);
+  }
+
+  .skull-front-lower{
+    position: absolute;
+    top: 45px;
+    width: 80%;
+    left: 10%;
+    height: 20px;
+    background: linear-gradient(180deg, var(--shadow-black) 0%, var(--void-black) 100%);
+    border-radius: 30% 30% 50% 50%;
+    border: 1px solid var(--blood-red);
+    transform: translateZ(10px);
+  }
+
+  .skull-left-side, .skull-right-side{
+    position: absolute;
+    top: 15px;
+    width: 45px;
+    height: 40px;
+    background: 
+      linear-gradient(90deg, var(--shadow-black) 0%, var(--void-black) 70%),
+      radial-gradient(circle at 30% 50%, #1a1a1a 0%, var(--void-black) 100%);
+    border-radius: 60% 30% 40% 60%;
+    border: 1px solid var(--blood-red);
+  }
+
+  .skull-left-side{
+    left: -15px;
+    transform: rotateY(-60deg) translateZ(8px);
+  }
+
+  .skull-right-side{
+    right: -15px;
+    transform: rotateY(60deg) translateZ(8px);
+  }
+
+  .skull-back{
+    position: absolute;
+    top: 10px;
+    width: 90%;
+    left: 5%;
+    height: 50px;
+    background: 
+      radial-gradient(ellipse at 50% 70%, var(--shadow-black) 0%, var(--void-black) 100%);
+    border-radius: 50% 50% 40% 40%;
+    border: 1px solid var(--blood-red);
+    transform: translateZ(-5px);
+  }
+
+  /* Eye Cavities with Depth */
+  .eye-cavity{
+    position: absolute;
+    top: 30px;
+    width: 12px;
+    height: 15px;
+    transform-style: preserve-3d;
+  }
+
+  .eye-cavity.left{ left: 12px; }
+  .eye-cavity.right{ right: 12px; }
+
+  .socket-depth{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse at center, var(--void-black) 0%, #0a0a0a 60%, var(--shadow-black) 100%);
+    border-radius: 60% 60% 40% 40%;
+    border: 1px solid var(--blood-red);
+    transform: translateZ(-8px);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+  }
+
+  .eye-flame{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    background: 
+      radial-gradient(circle, var(--crimson) 0%, var(--blood-red) 40%, transparent 70%);
+    border-radius: 50%;
+    transform: translateZ(2px);
+    animation: flameFlicker 1.5s ease-in-out infinite alternate;
+    box-shadow: 
+      0 0 15px var(--crimson),
+      inset 0 0 8px rgba(255,69,0,0.8);
+  }
+
+  .eye-core{
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    width: 30%;
+    height: 30%;
+    background: var(--ember);
+    border-radius: 50%;
+    transform: translateZ(5px);
+    box-shadow: 
+      0 0 20px var(--ember),
+      0 0 40px rgba(255,69,0,0.6);
+    animation: coreIntensity 2s ease-in-out infinite alternate;
+  }
+
+  /* Nasal Cavity */
+  .nasal-cavity{
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(8px);
+    width: 8px;
+    height: 12px;
+    background: var(--void-black);
+    border-radius: 20% 20% 60% 60%;
+    border: 1px solid var(--blood-red);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+  }
+
+  .nostril{
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    background: var(--void-black);
+    border-radius: 50%;
+    top: 2px;
+  }
+
+  .nostril.left{ left: 1px; }
+  .nostril.right{ right: 1px; }
+
+  /* Complex Jaw Structure */
+  .jaw-complex{
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 25px;
+    transform-style: preserve-3d;
+  }
+
+  .jaw-upper{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(180deg, var(--shadow-black) 0%, var(--void-black) 100%);
+    border-radius: 30% 30% 10% 10%;
+    border: 1px solid var(--blood-red);
+    transform: translateZ(8px);
+  }
+
+  .jaw-lower{
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    left: 5%;
+    height: 15px;
+    background: linear-gradient(180deg, var(--shadow-black) 0%, var(--void-black) 100%);
+    border-radius: 20% 20% 50% 50%;
+    border: 1px solid var(--blood-red);
+    transform: translateZ(6px);
+    animation: jawMovement 8s ease-in-out infinite;
+  }
+
+  .teeth-upper, .teeth-lower{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1px;
+  }
+
+  .teeth-upper{
+    top: 8px;
+    transform: translateX(-50%) translateZ(10px);
+  }
+
+  .teeth-lower{
+    bottom: 8px;
+    transform: translateX(-50%) translateZ(8px);
+  }
+
+  .teeth-upper::before, .teeth-lower::before{
+    content: '';
+    width: 20px;
+    height: 3px;
+    background: 
+      repeating-linear-gradient(90deg, 
+        #f0f0f0 0px, #f0f0f0 2px, 
+        transparent 2px, transparent 3px);
+    border-radius: 1px;
+  }
+
+  /* Advanced Animations */
+  @keyframes reaperFloat{
+    0%, 100% { 
+      transform: translateY(0px) rotateY(-3deg) rotateX(2deg); 
+      filter: drop-shadow(0 20px 40px rgba(139,0,0,0.8));
+    }
+    50% { 
+      transform: translateY(-12px) rotateY(3deg) rotateX(-2deg); 
+      filter: drop-shadow(0 30px 60px rgba(139,0,0,1));
+    }
+  }
+
+  @keyframes flameFlicker{
+    0%, 100% { 
+      opacity: 1; 
+      transform: translateZ(2px) scale(1);
+      box-shadow: 0 0 15px var(--crimson), inset 0 0 8px rgba(255,69,0,0.8);
+    }
+    50% { 
+      opacity: 0.7; 
+      transform: translateZ(2px) scale(1.1);
+      box-shadow: 0 0 25px var(--crimson), inset 0 0 12px rgba(255,69,0,1);
+    }
+  }
+
+  @keyframes coreIntensity{
+    0%, 100% { 
+      transform: translateZ(5px) scale(1);
+      box-shadow: 0 0 20px var(--ember), 0 0 40px rgba(255,69,0,0.6);
+    }
+    50% { 
+      transform: translateZ(5px) scale(1.2);
+      box-shadow: 0 0 30px var(--ember), 0 0 60px rgba(255,69,0,0.9);
+    }
+  }
+
+  @keyframes jawMovement{
+    0%, 90%, 100% { transform: translateZ(6px) rotateX(0deg); }
+    95% { transform: translateZ(6px) rotateX(5deg); }
+  }
+
+  /* Advanced 3D Player Avatar */
+  .player-advanced{
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    width: 100px;
+    height: 140px;
+    animation: playerFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 15px 30px rgba(59,130,246,0.6));
+  }
+
+  /* Complex Head Structure */
+  .head-complex{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 50px;
+    transform-style: preserve-3d;
+  }
+
+  .head-top{
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: 
+      radial-gradient(ellipse at 50% 40%, #f4a261 0%, #e76f51 70%),
+      linear-gradient(180deg, #f4a261 0%, #e76f51 100%);
+    border-radius: 50% 50% 40% 40%;
+    border: 2px solid var(--gold);
+    transform: translateZ(12px);
+    box-shadow: 
+      inset 0 0 15px rgba(59,130,246,0.3),
+      0 0 25px rgba(59,130,246,0.6);
+  }
+
+  .head-front{
+    position: absolute;
+    top: 20px;
+    width: 90%;
+    left: 5%;
+    height: 25px;
+    background: 
+      radial-gradient(ellipse at 50% 30%, #f4a261 0%, #e76f51 80%);
+    border-radius: 40% 40% 30% 30%;
+    border: 1px solid var(--gold);
+    transform: translateZ(10px);
+    box-shadow: inset 0 0 10px rgba(59,130,246,0.2);
+  }
+
+  .head-left, .head-right{
+    position: absolute;
+    top: 15px;
+    width: 35px;
+    height: 30px;
+    background: 
+      linear-gradient(90deg, #e76f51 0%, #d62828 70%);
+    border-radius: 50% 30% 40% 50%;
+    border: 1px solid var(--gold);
+  }
+
+  .head-left{
+    left: -10px;
+    transform: rotateY(-50deg) translateZ(6px);
+  }
+
+  .head-right{
+    right: -10px;
+    transform: rotateY(50deg) translateZ(6px);
+  }
+
+  .head-back{
+    position: absolute;
+    top: 10px;
+    width: 85%;
+    left: 7.5%;
+    height: 35px;
+    background: 
+      radial-gradient(ellipse at 50% 60%, #d62828 0%, #a61e1e 100%);
+    border-radius: 50% 50% 40% 40%;
+    border: 1px solid var(--gold);
+    transform: translateZ(-3px);
+  }
+
+  .face-front{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 50% 40%, #f4a261 0%, #e76f51 70%),
+      linear-gradient(180deg, #f4a261 0%, #e76f51 100%);
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    transform: translateZ(8px);
+    box-shadow: 
+      inset 0 0 10px rgba(59,130,246,0.3),
+      0 0 20px rgba(59,130,246,0.6);
+  }
+
+  .face-side-left, .face-side-right{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(90deg, #e76f51 0%, #d62828 100%);
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+  }
+
+  .face-side-left{
+    left: -6px;
+    top: 2px;
+    transform: rotateY(-40deg) translateZ(4px);
+  }
+
+  .face-side-right{
+    right: -6px;
+    top: 2px;
+    transform: rotateY(40deg) translateZ(4px);
+  }
+
+  .hair{
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(10px);
+    width: 28px;
+    height: 15px;
+    background: linear-gradient(180deg, #8b4513 0%, #654321 100%);
+    border-radius: 50% 50% 20% 20%;
+    border: 1px solid var(--dark-gold);
+  }
+
+  .eyes{
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(12px);
+    width: 20px;
+    height: 8px;
+  }
+
+  .eye{
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+    animation: eyeBlink 4s ease-in-out infinite;
+  }
+
+  .eye.left{ left: 3px; }
+  .eye.right{ right: 3px; }
+
+  .player-body{
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 45px;
+    transform-style: preserve-3d;
+  }
+
+  .torso-front{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(180deg, #3b82f6 0%, #1e40af 100%),
+      radial-gradient(ellipse at top, var(--gold) 0%, transparent 40%);
+    border-radius: 20% 20% 40% 40%;
+    border: 2px solid var(--gold);
+    transform: translateZ(6px);
+    box-shadow: 
+      inset 0 0 15px rgba(59,130,246,0.4),
+      0 0 25px rgba(59,130,246,0.8);
+  }
+
+  .mystical-aura{
+    position: absolute;
+    inset: -20px;
+    pointer-events: none;
+  }
+
+  .aura-ring{
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(59,130,246,0.3);
+    animation: auraRotate 6s linear infinite;
+  }
+
+  .aura-ring.ring-1{
+    inset: 0;
+    animation-duration: 6s;
+  }
+
+  .aura-ring.ring-2{
+    inset: 10px;
+    animation-duration: 8s;
+    animation-direction: reverse;
+  }
+
+  .aura-ring.ring-3{
+    inset: 20px;
+    animation-duration: 10s;
+  }
+
+  .player-name-3d{
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-shadow: 0 0 8px rgba(59,130,246,0.8);
+    letter-spacing: 0.5px;
+  }
+
+  @keyframes playerFloat{
+    0%, 100% { transform: translateY(0px) rotateY(5deg); }
+    50% { transform: translateY(-6px) rotateY(-5deg); }
+  }
+
+  @keyframes eyeBlink{
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+
+  @keyframes auraRotate{
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  

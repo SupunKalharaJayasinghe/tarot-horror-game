@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The 9th Fate — Tarot Horror</title>
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="../style/main.css" />
+</head>
+<body class="h-full bg-black text-zinc-100">
+  <!-- Scene -->
+  <main id="scene" class="relative min-h-screen overflow-hidden">
+    <!-- Supernatural Background Effects -->
+    <div class="supernatural-bg">
+      <!-- Floating Souls -->
+      <div class="floating-souls">
+        <div class="soul soul-1">👻</div>
+        <div class="soul soul-2">💀</div>
+        <div class="soul soul-3">🕯️</div>
+        <div class="soul soul-4">⚰️</div>
+        <div class="soul soul-5">🔮</div>
+        <div class="soul soul-6">👻</div>
+      </div>
+      
+      <!-- Blood Drops -->
+      <div class="blood-rain">
+        <div class="blood-drop drop-1"></div>
+        <div class="blood-drop drop-2"></div>
+        <div class="blood-drop drop-3"></div>
+        <div class="blood-drop drop-4"></div>
+        <div class="blood-drop drop-5"></div>
+      </div>
+      
+      <!-- Lightning Flashes -->
+      <div class="lightning-overlay"></div>
+      
+      <!-- Fog Effect -->
+      <div class="fog-layer fog-1"></div>
+      <div class="fog-layer fog-2"></div>
+    </div>
+
+    <!-- Vignette -->
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.6)_55%,rgba(0,0,0,0.95)_100%)]"></div>
+
+    <!-- Round Table -->
+    <section id="table-wrap" class="absolute w-[70vmin] h-[70vmin] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div id="round-table" class="absolute inset-0 rounded-full shadow-2xl table-wood">
+        <!-- No candles - clean table -->
+      </div>
+
+      <!-- Advanced 3D Reaper (positioned at X - upper left) -->
+      <div id="ncp-reaper" class="absolute -top-16 -left-16 z-20">
+        <div class="reaper-advanced">
+          <!-- Complex Skull Structure -->
+          <div class="skull-complex">
+            <div class="skull-top"></div>
+            <div class="skull-front-upper"></div>
+            <div class="skull-front-lower"></div>
+            <div class="skull-left-side"></div>
+            <div class="skull-right-side"></div>
+            <div class="skull-back"></div>
+            <div class="skull-bottom"></div>
+            
+            <!-- Eye Sockets with Depth -->
+            <div class="eye-cavity left">
+              <div class="socket-depth"></div>
+              <div class="eye-flame"></div>
+              <div class="eye-core"></div>
+            </div>
+            <div class="eye-cavity right">
+              <div class="socket-depth"></div>
+              <div class="eye-flame"></div>
+              <div class="eye-core"></div>
+            </div>
+            
+            <!-- Nasal Cavity -->
+            <div class="nasal-cavity">
+              <div class="nostril left"></div>
+              <div class="nostril right"></div>
+            </div>
+            
+            <!-- Jaw Structure -->
+            <div class="jaw-complex">
+              <div class="jaw-upper"></div>
+              <div class="jaw-lower"></div>
+              <div class="teeth-upper"></div>
+              <div class="teeth-lower"></div>
+            </div>
+          </div>
+          
+          <!-- Hooded Cloak with Physics -->
+          <div class="cloak-advanced">
+            <div class="hood-top"></div>
+            <div class="hood-front"></div>
+            <div class="hood-left"></div>
+            <div class="hood-right"></div>
+            <div class="hood-back"></div>
+            <div class="hood-shadow"></div>
+            
+            <div class="cloak-body">
+              <div class="cloak-panel front"></div>
+              <div class="cloak-panel left"></div>
+              <div class="cloak-panel right"></div>
+              <div class="cloak-panel back"></div>
+            </div>
+            
+            <div class="cloak-flow">
+              <div class="flow-segment s1"></div>
+              <div class="flow-segment s2"></div>
+              <div class="flow-segment s3"></div>
+              <div class="flow-segment s4"></div>
+            </div>
+          </div>
+          
+          <!-- Detailed Scythe -->
+          <div class="scythe-advanced">
+            <div class="handle-segments">
+              <div class="handle-top"></div>
+              <div class="handle-mid"></div>
+              <div class="handle-bottom"></div>
+              <div class="handle-grip"></div>
+            </div>
+            <div class="blade-assembly">
+              <div class="blade-main"></div>
+              <div class="blade-edge"></div>
+              <div class="blade-spine"></div>
+              <div class="blade-reflection"></div>
+            </div>
+            <div class="scythe-connector"></div>
+          </div>
+          
+          <!-- Supernatural Effects -->
+          <div class="death-aura">
+            <div class="soul-wisp w1"></div>
+            <div class="soul-wisp w2"></div>
+            <div class="soul-wisp w3"></div>
+            <div class="soul-wisp w4"></div>
+            <div class="soul-wisp w5"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced 3D Player Avatar (positioned at Y - lower right) -->
+      <div id="player-seat" class="absolute -bottom-16 -right-16 z-20">
+        <div class="player-advanced">
+          <!-- Detailed Head Structure -->
+          <div class="head-complex">
+            <div class="head-top"></div>
+            <div class="head-front"></div>
+            <div class="head-left"></div>
+            <div class="head-right"></div>
+            <div class="head-back"></div>
+            
+            <!-- Facial Features -->
+            <div class="face-features">
+              <div class="forehead"></div>
+              <div class="cheek left"></div>
+              <div class="cheek right"></div>
+              <div class="chin"></div>
+            </div>
+            
+            <!-- Eyes with Depth -->
+            <div class="eye-complex left">
+              <div class="eyeball"></div>
+              <div class="iris"></div>
+              <div class="pupil"></div>
+              <div class="eye-shine"></div>
+            </div>
+            <div class="eye-complex right">
+              <div class="eyeball"></div>
+              <div class="iris"></div>
+              <div class="pupil"></div>
+              <div class="eye-shine"></div>
+            </div>
+            
+            <!-- Hair System -->
+            <div class="hair-system">
+              <div class="hair-base"></div>
+              <div class="hair-layer l1"></div>
+              <div class="hair-layer l2"></div>
+              <div class="hair-layer l3"></div>
+            </div>
+          </div>
+          
+          <!-- Torso with Clothing -->
+          <div class="torso-complex">
+            <div class="chest-front"></div>
+            <div class="chest-left"></div>
+            <div class="chest-right"></div>
+            <div class="chest-back"></div>
+            
+            <!-- Clothing Layers -->
+            <div class="clothing-system">
+              <div class="shirt-front"></div>
+              <div class="shirt-left"></div>
+              <div class="shirt-right"></div>
+              <div class="collar"></div>
+              <div class="clothing-details"></div>
+            </div>
+          </div>
+          
+          <!-- Arms with Joints -->
+          <div class="arm-system left">
+            <div class="shoulder"></div>
+            <div class="upper-arm"></div>
+            <div class="elbow"></div>
+            <div class="forearm"></div>
+            <div class="hand"></div>
+          </div>
+          <div class="arm-system right">
+            <div class="shoulder"></div>
+            <div class="upper-arm"></div>
+            <div class="elbow"></div>
+            <div class="forearm"></div>
+            <div class="hand"></div>
+          </div>
+          
+          <!-- Mystical Energy Field -->
+          <div class="energy-field">
+            <div class="energy-core"></div>
+            <div class="energy-ring r1"></div>
+            <div class="energy-ring r2"></div>
+            <div class="energy-ring r3"></div>
+            <div class="energy-spark s1"></div>
+            <div class="energy-spark s2"></div>
+            <div class="energy-spark s3"></div>
+            <div class="energy-spark s4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Field (78 scattered cards get injected here) -->
+      <div id="card-field" class="absolute inset-0"></div>
+    </section>
+
+    <!-- HUD: left — Horror Ritual Panel -->
+    <aside class="horror-panel-left fixed left-4 top-4 w-[300px] max-h-[85vh]">
+      <h2 class="horror-title">⚰️ RITUAL INTAKE ⚰️</h2>
+      <label class="horror-label">
+        <span class="horror-label-text">👤 MORTAL NAME</span>
+        <input id="in-name" class="w-full input-dark" placeholder="Enter your cursed name..." />
+      </label>
+      <label class="horror-label">
+        <span class="horror-label-text">📅 DATE OF BIRTH</span>
+        <input id="in-birth" type="date" class="w-full input-dark" />
+      </label>
+      <label class="horror-label">
+        <span class="horror-label-text">♈ ZODIAC SIGN</span>
+        <select id="in-ascendant" class="w-full input-dark">
+          <option value="">Choose your fate...</option>
+        </select>
+      </label>
+      <label class="horror-label">
+        <span class="horror-label-text">⚧ GENDER</span>
+        <select id="in-gender" class="w-full input-dark">
+          <option value="">Prefer not to say</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+          <option value="Non-binary">Non-binary</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <button id="btn-start" class="w-full btn-ritual mt-1">🔮 BEGIN RITUAL 🔮</button>
+      <p class="horror-tip">💀 Nine cards shall reveal your doom: 8 around the circle of fate, then the final judgment 💀</p>
+    </aside>
+
+    <!-- HUD: right — Horror Transcript -->
+    <aside class="horror-panel-right fixed right-4 top-4 w-[340px] max-h-[85vh] overflow-hidden">
+      <div class="horror-transcript-header">
+        <h2 class="horror-title">📜 PROPHECY SCROLL 📜</h2>
+      </div>
+      <div id="transcript" class="horror-transcript-content">
+        <div class="horror-waiting">🕯️ The spirits await your offering... 🕯️</div>
+      </div>
+    </aside>
+
+    <!-- Horror Control Panel -->
+    <div class="horror-control-panel fixed bottom-6 left-1/2 -translate-x-1/2">
+      <div class="control-container">
+        <div class="control-glow"></div>
+        <button id="btn-reshuffle" class="btn-ghost">
+          <span class="btn-icon">🔄</span>
+          <span class="btn-text">RESHUFFLE DECK</span>
+        </button>
+        <div class="control-divider"></div>
+        <button id="btn-restart" class="btn-ghost">
+          <span class="btn-icon">💀</span>
+          <span class="btn-text">NEW VICTIM</span>
+        </button>
+        <div class="status-indicator">
+          <span id="step-indicator" class="status-text"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating UI Enhancements -->
+    <div class="ui-enhancements">
+      <!-- Corner Decorations -->
+      <div class="corner-decoration top-left">
+        <div class="decoration-rune">⚡</div>
+      </div>
+      <div class="corner-decoration top-right">
+        <div class="decoration-rune">🌙</div>
+      </div>
+      <div class="corner-decoration bottom-left">
+        <div class="decoration-rune">🕷️</div>
+      </div>
+      <div class="corner-decoration bottom-right">
+        <div class="decoration-rune">🦇</div>
+      </div>
+      
+      <!-- Floating Orbs -->
+      <div class="mystical-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

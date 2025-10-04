@@ -1,0 +1,14 @@
+{
+  "name": "tarot-horror-game",
+  "private": true,
+  "version": "0.1.0",
+  "description": "The 9th Fate — web MVP (tarot horror ritual)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
