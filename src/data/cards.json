@@ -1,0 +1,10 @@
+[
+  { "id": "major-0", "name": "The Fool", "arcana": "Major", "upright": "Innocence, leap of faith.", "reversed": "Naivety, peril." },
+  { "id": "major-1", "name": "The Magician", "arcana": "Major", "upright": "Will, focus.", "reversed": "Manipulation, trickery." },
+  { "id": "major-2", "name": "The High Priestess", "arcana": "Major", "upright": "Mystery, intuition.", "reversed": "Secrets, hidden agendas." },
+  { "id": "major-3", "name": "The Empress", "arcana": "Major", "upright": "Creation, nurture.", "reversed": "Smothering, decay." },
+  { "id": "major-4", "name": "The Emperor", "arcana": "Major", "upright": "Structure, command.", "reversed": "Tyranny, rigidity." },
+  { "id": "major-5", "name": "The Hierophant", "arcana": "Major", "upright": "Rites, tradition.", "reversed": "Dogma, blind faith." },
+  { "id": "major-6", "name": "The Lovers", "arcana": "Major", "upright": "Union, choice.", "reversed": "Temptation, discord." },
+  { "id": "major-7", "name": "The Chariot", "arcana": "Major", "upright": "Drive, triumph.", "reversed": "Reckless charge, loss of control." }
+]

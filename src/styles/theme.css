@@ -1,0 +1,14 @@
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(1200px 600px at 50% -10%, rgba(179, 0, 45, 0.18), transparent 60%),
+              radial-gradient(900px 500px at 120% 10%, rgba(122, 31, 68, 0.18), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ghost-fade { animation: ghost-fade 7s ease-in-out infinite alternate; }
+  @keyframes ghost-fade { from { opacity: 0.85; } to { opacity: 0.6; } }
+}
